@@ -1,0 +1,23 @@
+name: Make PDF
+
+on:
+  push:
+
+jobs:
+  make_pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Build Docker
+        run: docker build -t pandoc .
+
+      - name: Generate PDF
+        run: docker run -v $(pwd):/project pandoc
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: resume.pdf
+          path: resume.pdf

@@ -9,8 +9,6 @@ RUN apt-get update \
 
 WORKDIR /project
 
-COPY github.css .
-
 CMD pandoc -f markdown -t html resume.md -o resume.pdf \
         --metadata pagetitle="required_but_unused" \
         --self-contained \

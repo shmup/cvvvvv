@@ -12,4 +12,5 @@ WORKDIR /project
 CMD pandoc -f markdown -t html resume.md -o resume.pdf \
         --metadata pagetitle="required_but_unused" \
         --self-contained \
-        --css=github.css
+        --css=github.css \
+        --pdf-engine-opt=--enable-local-file-access

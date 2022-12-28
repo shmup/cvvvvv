@@ -5,11 +5,13 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
  && apt-get install -yq \
     pandoc \
-    texlive-latex-base \
-    texlive-fonts-recommended \
-    texlive-extra-utils \
-    texlive-latex-extra
+    wkhtmltopdf
 
 WORKDIR /project
 
-CMD pandoc resume.md -o resume.pdf
+COPY github.css .
+
+CMD pandoc -f markdown -t html resume.md -o resume.pdf \
+        --metadata pagetitle="required_but_unused" \
+        --self-contained \
+        --css=github.css

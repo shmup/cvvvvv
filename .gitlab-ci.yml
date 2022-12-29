@@ -7,9 +7,11 @@ services:
 make-pdf:
   stage: pdf
   image: docker:latest
+  before_script:
+    - apk --no-cache add git just
   script:
-    - docker build -t pandoc .
-    - docker run -v $(pwd):/project pandoc
+    - just build
+    - just run
   artifacts:
     paths:
       - resume.pdf

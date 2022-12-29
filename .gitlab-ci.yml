@@ -1,0 +1,16 @@
+stages:
+  - pdf
+
+services:
+  - docker:dind
+
+make-pdf:
+  stage: pdf
+  image: docker:latest
+  script:
+    - docker build -t pandoc .
+    - docker run -v $(pwd):/project pandoc
+  artifacts:
+    paths:
+      - resume.pdf
+    expire_in: 1 day

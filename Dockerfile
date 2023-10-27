@@ -13,4 +13,4 @@ WORKDIR /project
 # This is not required. It's included to silence a warning.
 ENV XDG_RUNTIME_DIR=/tmp/runtime-root
 
-CMD ["./pandoc.sh"]
+CMD ["sh", "pandoc.sh"]

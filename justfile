@@ -1,8 +1,8 @@
 build:
-  docker build -t pandoc .
+  podman build -t pandoc .
 
 run:
-  docker run -v $(pwd):/project pandoc
+  podman run -v $(pwd):/project:Z pandoc
 
 watch:
-  docker run -it -e GLORT_WATCH=1 -v $(pwd):/project pandoc
+  podman run -it -e GLORT_WATCH=1 -v $(pwd):/project:Z pandoc

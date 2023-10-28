@@ -2,7 +2,7 @@
 
 INFILE="resume.md"
 OUTFILE="resume.pdf"
-CSSFILE="github.css"
+CSSFILE="aesthetic.css"
 
 generate_pdf() {
   pandoc \
@@ -21,7 +21,7 @@ generate_pdf
 
 if [ -n "$GLORT_WATCH" ]; then
   echo "Watching for changes..."
-  while inotifywait -qe modify resume.md github.css; do
+  while inotifywait -qe modify resume.md $CSSFILE; do
     generate_pdf
   done
 fi
